@@ -1,10 +1,12 @@
 import sys
-from random import randint
+from random import randint, choice
 from PyQt5 import uic
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QApplication, QMainWindow, QWidget, QLabel, QGridLayout
 from PyQt5.QtGui import QPainter, QColor, QPen, QPixmap, QBrush
 
+
+COLORS = [Qt.red, Qt.yellow, Qt.blue, Qt.green, Qt.magenta, Qt.cyan, Qt.white]
 
 class Git(QMainWindow):
     def __init__(self):
@@ -23,10 +25,7 @@ class Git(QMainWindow):
         w = randint(10, 100)
         h = w
         painter = QPainter(self.label.pixmap())
-        pen = QPen()
-        pen.setWidth(1)
-        pen.setColor(Qt.yellow)
-        painter.setBrush(QBrush(Qt.yellow, Qt.SolidPattern))
+        painter.setBrush(QBrush(choice(COLORS), Qt.SolidPattern))
 
         painter.drawEllipse(x, y, w, h)
         painter.end()
